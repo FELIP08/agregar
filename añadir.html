@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar Estudiantes</title>
+    <link rel="stylesheet" href="css/style3.css">
+</head>
+<body>
+    <header>
+        <div class="text">
+            <a href="añadir.html">
+            <h1>Blockchain Estudiantes</h1>
+            </a>
+        </div>
+    </header>
+    <div class="main">
+        <h1>Ingresar Estudiantes</h1>
+        <div class="container">
+            <div class="videos">
+                <div class="box-videos">
+                    <video id="video" autoplay></video>
+                </div>
+                <div class="box-videos">
+                    <canvas id="canvas" hidden></canvas>
+                </div>
+            </div>
+            <h2 id="apuntar">Apunta la cámara al código QR</h2>
+            <output><h3> <span id="data"></span></h3></output>
+            <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
+            <script>
+                const video = document.getElementById("video");
+                const canvas = document.getElementById("canvas");
+                const canvasContext = canvas.getContext("2d");
+                const outputMessage = document.getElementById("apuntar");
+                const outputData = document.getElementById("data");
+
+                navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.setAttribute("playsinline", true);
+                    requestAnimationFrame(tick);
+                });
+                async function addBlock(nt) {
+                        const data = nt;
+                        await fetch(`http://localhost:3000/addBlock/${data}`);
+                        fetchBlockchain();
+                }
+                async function sleep(milliseconds) {
+                    const date = Date.now();
+                    let currentDate = null;
+                    do {
+                        currentDate = Date.now();
+                    } while (currentDate - date < milliseconds);
+                }
+                function tick() {
+                    if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+                        canvasContext.drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+                        const imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
+                        const qrCode = jsQR(imageData.data, imageData.width, imageData.height);
+            
+                        if (qrCode) {
+                            outputMessage.hidden = true;
+                            outputData.innerText = qrCode.data;
+                            addBlock(qrCode.data);
+                            sleep(2000);
+                        } else {
+                            outputMessage.hidden = false;
+                            outputData.innerText = "";
+                        }
+                    }
+                    requestAnimationFrame(tick);
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>

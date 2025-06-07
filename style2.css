@@ -1,0 +1,139 @@
+body{
+    background-color: #E2F1E7;
+    color: #fff;
+    margin: 0%;
+    padding: 0%;
+    font-family: "Sour Gummy";
+    justify-content: center;
+}
+h1{
+    margin: 0%;
+}
+h2{
+    margin: 0%;
+}
+.enca{
+    height: auto;
+    padding: 20px 40px;
+    display: flex;
+}
+.text{
+    width: 70%;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+a:hover{
+    color: #E2F1E7;
+}
+.icon{
+    width: 30%;
+    height: 32px;
+    margin: 0%;
+    padding: 0%;
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+#exit{
+    display: flex;
+    margin-left: auto;
+}
+.icon img{
+    margin-right: 15px;
+}
+.content{
+    background-color: #1A1A1D;
+    position: absolute;
+    width: 75%;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 30px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+.main{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid white;
+    border-radius: 30px;
+}
+.enun{
+    padding: 10px;
+}
+.container{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+table{
+    width: 100%;
+    font-size: 1em;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    text-align: center;
+}
+thead{
+    background-color: #E2F1E7;
+    color: #1A1A1D;
+}
+th{
+    padding: 20px 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+td{
+    padding: 15px;
+    border-bottom: solid 1px #E2F1E7;
+}
+tbody tr:hover{
+    background-color: #387478;
+}
+#barra{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#busqueda{
+    height: 32px;
+    width: 100%;
+    border: solid 0px;
+    border-radius: 10px;
+}
+#boton{
+    background-color: transparent;
+    border: none;
+}
+.videos{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    display: flex;
+    width: 100%;
+}
+.box-videos{
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+video, canvas {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border: solid 3px;
+    border-color: #E2F1E7;
+    border-radius: 20px ;
+}
